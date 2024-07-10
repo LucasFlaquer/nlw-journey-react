@@ -1,4 +1,5 @@
 import { ArrowRight, UserRoundPlus } from 'lucide-react';
+import { Button } from '../../../components/button';
 
 interface Props {
   emailsToInvite: string[]
@@ -19,10 +20,10 @@ export function InviteGuestsStep({ emailsToInvite, openGuestsModal, openConfirmT
         
       </button>
       <div className='w-px h-6 bg-zinc-800' ></div>
-      <button className='bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400' onClick={openConfirmTripModal}>
+      <Button onClick={openConfirmTripModal}>
         Confirmar Viagem
         <ArrowRight className='size-5' />
-      </button>
+      </Button>
     </div>
   )
 }
