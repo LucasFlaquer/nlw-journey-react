@@ -1,16 +1,14 @@
-import { Calendar, Tag, X } from "lucide-react";
-import { Button } from "../../components/button";
-import { FormEvent } from "react";
-import { api } from "../../lib/axios";
-import { useParams } from "react-router-dom";
+import { Calendar, Tag, X } from 'lucide-react'
+import { Button } from '../../components/button'
+import { FormEvent } from 'react'
+import { api } from '../../lib/axios'
+import { useParams } from 'react-router-dom'
 
 interface Props {
   closeCreateActivityModal: () => void
 }
 
-export function CreateActivityModal({
-  closeCreateActivityModal
-}: Props) {
+export function CreateActivityModal({ closeCreateActivityModal }: Props) {
   const { tripId } = useParams()
 
   async function createActivity(event: FormEvent<HTMLFormElement>) {
@@ -23,7 +21,7 @@ export function CreateActivityModal({
 
     await api.post(`/trips/${tripId}/activities`, {
       title,
-      occurs_at
+      occurs_at,
     })
     window.document.location.reload()
   }
@@ -35,7 +33,10 @@ export function CreateActivityModal({
           <div className="flex items-center justify-between">
             <h2 className="font-lg font-semibold">Cadastrar atividade</h2>
             <button>
-              <X className="size-5 text-zinc-400" onClick={closeCreateActivityModal} />
+              <X
+                className="size-5 text-zinc-400"
+                onClick={closeCreateActivityModal}
+              />
             </button>
           </div>
 
@@ -43,7 +44,7 @@ export function CreateActivityModal({
             Todos convidados podem visualizar as atividades.
           </p>
         </div>
-        
+
         <form onSubmit={createActivity} className="space-y-3">
           <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
             <Tag className="text-zinc-400 size-5" />
@@ -64,9 +65,7 @@ export function CreateActivityModal({
             />
           </div>
 
-          <Button size="full">
-            Salvar atividade
-          </Button>
+          <Button size="full">Salvar atividade</Button>
         </form>
       </div>
     </div>
